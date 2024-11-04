@@ -583,6 +583,10 @@ function determineDevelopmentEnvironmentConfigPath(): string|undefined {
     if (fs.existsSync(valetConfigPath())) {
         return valetConfigPath()
     }
+
+    if (fs.existsSync(valetLinuxConfigPath())) {
+        return valetLinuxConfigPath()
+    }
 }
 
 /**
@@ -626,4 +630,11 @@ function herdWindowsConfigPath(): string {
  */
 function valetConfigPath(): string {
     return path.resolve(os.homedir(), '.config', 'valet')
+}
+
+/**
+ * Valet Linux's configuration directory.
+ */
+function valetLinuxConfigPath(): string {
+    return path.resolve(os.homedir(), '.valet')
 }
