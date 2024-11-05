@@ -218,7 +218,7 @@ function resolveLaravelPlugin(pluginConfig: Required<PluginConfig>): LaravelPlug
                                 server.config.logger.info(`  ${colors.green('➜')}  Using Herd certificate to secure Vite.`)
                             }
 
-                            if (resolvedConfig.server.https.key.startsWith(valetConfigPath())) {
+                            if (resolvedConfig.server.https.key.startsWith(valetMacConfigPath())) {
                                 server.config.logger.info(`  ${colors.green('➜')}  Using Valet certificate to secure Vite.`)
                             }
                         }
@@ -580,8 +580,8 @@ function determineDevelopmentEnvironmentConfigPath(): string|undefined {
         return herdWindowsConfigPath()
     }
 
-    if (fs.existsSync(valetConfigPath())) {
-        return valetConfigPath()
+    if (fs.existsSync(valetMacConfigPath())) {
+        return valetMacConfigPath()
     }
 
     if (fs.existsSync(valetLinuxConfigPath())) {
@@ -626,9 +626,9 @@ function herdWindowsConfigPath(): string {
 }
 
 /**
- * Valet's configuration directory.
+ * Valet's Mac configuration directory.
  */
-function valetConfigPath(): string {
+function valetMacConfigPath(): string {
     return path.resolve(os.homedir(), '.config', 'valet')
 }
 
