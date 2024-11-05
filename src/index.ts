@@ -218,7 +218,7 @@ function resolveLaravelPlugin(pluginConfig: Required<PluginConfig>): LaravelPlug
                                 server.config.logger.info(`  ${colors.green('➜')}  Using Herd certificate to secure Vite.`)
                             }
 
-                            if (resolvedConfig.server.https.key.startsWith(valetMacConfigPath())) {
+                            if (resolvedConfig.server.https.key.startsWith(valetMacConfigPath()) || resolvedConfig.server.https.key.startsWith(valetLinuxConfigPath())) {
                                 server.config.logger.info(`  ${colors.green('➜')}  Using Valet certificate to secure Vite.`)
                             }
                         }
